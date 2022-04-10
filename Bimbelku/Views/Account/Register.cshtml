@@ -1,0 +1,103 @@
+﻿@model User
+
+@{
+    Layout = "_AccountLayout";
+}
+
+<form class="mt-4" asp-action="Register" id="form-input" method="post">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input class="wajib form-control" asp-for="Nama" placeholder="Nama">
+                <span asp-validation-for="Nama" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input class="wajib form-control" asp-for="Email" id="Email" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input class="wajib form-control" asp-for="Username" placeholder="Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input class="wajib form-control" type="password" asp-for="Password" placeholder="password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input class="wajib form-control" type="text" name="otp" id="otp" placeholder="Kode OTP" required>
+                    <button type="button" id="email-btn" class="btn btn-success">
+                        Kirim Email
+                    </button>
+            </div>
+        </div>
+        <div class="col-lg-12 text-center">
+            <button type="submit" id="btn-submit" class="btn btn-block btn-dark">Sign Up</button>
+        </div>
+        <div class="col-lg-12 text-center mt-5">
+            Already have an account? <a href="/Account/Login" class="text-danger">Sign In</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script>
+
+        let ambilNilai = () => {
+            // #Email artinya id pada <input asp-for="Email"
+            return $("#Email").val();
+        }
+
+        $(document).ready(function() {
+            $("#email-btn").click(function (em) {
+
+                // alert
+                swal({
+                    title: "Mohon Tunggu",
+                    text: "Sedang mengirim email",
+                    icon: "info",
+                    button: "Ok",
+                });
+
+                // method post
+                // NamaController/NamaFunction
+                $.post("/Account/KirimOTP",
+                    {
+                        // harus sama dengan parameter di fungsi KirimEmailOTP
+                        tujuan: ambilNilai()
+                    },
+                    function (returnya) {
+                        // alert
+                        swal({
+                            title: returnya.result == true ? "Sukses" : "Gagal",
+                            text: returnya.message,
+                            icon: returnya.result == true ? "success" : "error",
+                            button: "Ok",
+                            closeOnClickOutside: false,
+                        });
+                    });
+            })
+
+            //$('#form-input').on('keyup', function () {
+            //    let lengkap = $(".wajib")
+            //        .filter(
+            //            function () {
+            //                return $.trim($(this).val()).length == 0
+            //            })
+            //        .length == 0
+
+            //    let otpTerisi = $("#otp").val().length > 0
+
+            //    $('#email-btn').attr('disabled', lengkap ? false : true)
+            //    $('#btn-submit').attr('disabled', lengkap && otpTerisi ? false : true)
+            //})
+        })
+    </script>
+}

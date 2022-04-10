@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Soal>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Soal Latihan</h3>
+           
+            <a asp-action="CreateSoal" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Tambah Soal
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mapel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Waktu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FileSoal)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Mapel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Waktu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.FileSoal)
+                            </td>
+                            <td>
+                                <a asp-action="EditSoal" asp-route-id="@item.Id" class="btn btn-outline-warning" title="Edit">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a asp-action="DetailsSoal" asp-route-id="@item.Id" class="btn btn-outline-info" title="Details">
+                                    <i class="fas fa-info"></i>
+                                </a>
+                                <a asp-action="DeleteSoal" asp-route-id="@item.Id" class="btn btn-outline-danger" title="hapus"
+                                   onclick="if (!confirm('Yakin Akan Menghapus?')) {return false;}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

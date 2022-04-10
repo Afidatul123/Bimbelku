@@ -1,0 +1,33 @@
+﻿@model User
+
+@{
+    Layout = "_AccountLayout";
+
+    @if (!string.IsNullOrEmpty(ViewBag.Pesan))
+    {
+        <script>alert("@ViewBag.Pesan");</script>
+    }
+}
+
+<form class="mt-4" asp-controller="Account" asp-action="Login" method="post">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input asp-for="Username" class="form-control" type="text" placeholder="Username">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input asp-for="Password" class="form-control" type="password" placeholder="password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-12 text-center">
+            <input type="submit" class="btn btn-block btn-dark" value="login">
+        </div>
+        <div class="col-lg-12 text-center mt-5">
+            Don't have an account? <a href="/Account/Register" class="text-danger">Regist</a>
+        </div>
+    </div>
+</form>

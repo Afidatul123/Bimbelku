@@ -1,0 +1,29 @@
+﻿@model Materi
+
+<h3>Edit Materi</h3>
+<hr />
+<div class="row">
+    <div class="card-body">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="NamaMateri" class="control-label"></label>
+                <input asp-for="NamaMateri" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Mapel" class="control-label"></label>
+                <input asp-for="Mapel" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Keterangan" class="control-label"></label>
+                <input asp-for="Keterangan" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileMateri" class="control-label"></label>
+                <input type="file" name="Image" accept=".jpg,.png,.pdf,.mp4" multiple class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

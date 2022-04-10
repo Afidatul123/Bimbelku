@@ -1,0 +1,63 @@
+﻿@model Soal
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Materi</h4>
+                <form asp-action="CreateSoal" enctype="multipart/form-data">
+                    <div class="form-body">
+                        <label asp-for="Mapel" class="control-label">Mata Pelajaran </label>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <input asp-for="Mapel" class="form-control" />
+                                    <span asp-validation-for="Mapel" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <label asp-for="Waktu" class="control-label">Keterangan </label>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <input asp-for="Waktu" class="form-control" />
+                                    <span asp-validation-for="Waktu" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <label asp-for="FileSoal" class="control-label">File Materi </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" accept=".jpg,.png,.pdf,.mp4" class="custom-file-input" id="inputGroupFile01" multiple>
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-info">Submit</button>
+                            <button type="reset" class="btn btn-dark">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

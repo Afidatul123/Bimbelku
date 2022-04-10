@@ -1,0 +1,25 @@
+﻿@model Soal
+
+<h3>Edit Soal</h3>
+<hr />
+<div class="row">
+    <div class="card-body">
+        <form asp-action="EditSoal" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Mapel" class="control-label"></label>
+                <input asp-for="Mapel" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Waktu" class="control-label"></label>
+                <input asp-for="Waktu" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FileSoal" class="control-label"></label>
+                <input type="file" name="Image" accept=".jpg,.png,.pdf,.mp4" multiple class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

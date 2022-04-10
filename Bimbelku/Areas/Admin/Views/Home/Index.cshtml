@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Materi>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Materi Pembelajaran</h3>
+            <h6 class="card-subtitle">
+               Berisi Materi-Materi Terupdate
+            </h6>
+            <a asp-action="Create" class="btn btn-primary" >
+                <i class="fas fa-plus"></i>
+                Tambah Materi
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NamaMateri)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mapel)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Keterangan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FileMateri)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.NamaMateri)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Mapel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.Keterangan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.FileMateri)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning" title="Edit">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info" title="Details">
+                                    <i class="fas fa-info"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" title="hapus"
+                                   onclick="if (!confirm('Yakin Akan Menghapus?')) {return false;}">
+                                   <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

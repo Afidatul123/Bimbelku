@@ -1,0 +1,18 @@
+﻿@model Materi
+
+<div>
+    <h3>Id : @Model.Id</h3>
+    <h3>Nama Materi : @Model.NamaMateri</h3>
+    <h3>Mata Pelajaran : @Model.Mapel</h3>
+    <h3>Keterangan : @Model.Keterangan</h3>
+
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+        <i class="fas fa-pencil-alt"></i>
+        Edit
+    </a>
+    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-danger">
+        <i class="fas fa-trash"></i>
+        Delete
+    </a>
+
+</div>

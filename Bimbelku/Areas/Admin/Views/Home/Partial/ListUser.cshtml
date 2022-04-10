@@ -1,0 +1,47 @@
+﻿@model UserDashboard
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Data User</h4>
+            </div>
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(item => item.user[0].Nama)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(item => item.user[0].Username)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(item => item.user[0].Password)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(item => item.user[0].Roles.Id)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.user)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nama)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Roles.Id)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
